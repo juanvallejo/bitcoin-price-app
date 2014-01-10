@@ -30,6 +30,23 @@ var apis = {
 					error:function() {}
 				});
 			}
+		},
+		{
+			_done:false,
+			action:'buy',
+			buy:'https://coinbase.com/api/v1/prices/buy/',
+			data:{},
+			name:'mtgox',
+			sell:'https://coinbase.com/api/v1/prices/sell/',
+			socket:true,
+			get:function(fn) {
+				var self = this;
+				try {
+					self.socket = io.connect('https://socketio.mtgox.com:443/mtgox');
+				} catch(e) {
+					return console.log("Error connecting to the mtgox socket");
+				}
+			}
 		}
 	]
 };
