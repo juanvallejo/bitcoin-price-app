@@ -1,3 +1,5 @@
+#!/bin/env node
+
 var fs = require('fs'),app = require('http').createServer(function(req,res) {
 	var path = req.url == '/' ? '/index.html' : req.url;
 	try {
@@ -24,4 +26,4 @@ var fs = require('fs'),app = require('http').createServer(function(req,res) {
 	} catch(e) {
 		console.log('An error occurred while parsing the file \''+req.url+'\'');
 	}
-}).listen(8000);
+}).listen(process.env.OPENSHIFT_NODEJS_PORT || 8000);
