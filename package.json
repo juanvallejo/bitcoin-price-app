@@ -1,5 +1,5 @@
 {
-  "name": "Bitcoin Price App",
+  "name": "bit",
   "version": "1.0.0",
   "description": "Bitcoin price checker",
   "keywords": [
@@ -24,7 +24,6 @@
     "npm": ">= 1.0.0"
   },
 
-  "dependencies": {},
   "devDependencies": {},
   "bundleDependencies": [],
 
