@@ -24,9 +24,7 @@
     "npm": ">= 1.0.0"
   },
 
-  "dependencies": {
-//    "express": "*"
-  },
+  "dependencies": {},
   "devDependencies": {},
   "bundleDependencies": [],
 
