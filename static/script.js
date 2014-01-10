@@ -47,6 +47,7 @@ window.addEventListener('load',function() {
 			item.get(function(data) {
 				buyPrice.innerHTML = '$'+data.buy.subtotal.amount;
 				sellPrice.innerHTML = '$'+data.sell.subtotal.amount;
+				bitPrice.innerHTML = '$'+(Math.round(1/data.sell.subtotal.amount*100000)/100000)
 				document.title = buyPrice.innerHTML+' - '+title;
 			});
 			if(index == apis.exchanges.length-1) setTimeout(update,ticker);
