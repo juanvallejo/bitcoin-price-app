@@ -26,4 +26,4 @@ var fs = require('fs'),app = require('http').createServer(function(req,res) {
 	} catch(e) {
 		console.log('An error occurred while parsing the file \''+req.url+'\'');
 	}
-}).listen(process.env.OPENSHIFT_NODEJS_PORT || 8000);
+}).listen(process.env.OPENSHIFT_NODEJS_PORT || 8000,process.env.OPENSHIFT_NODEJS_IP || 'localhost');
