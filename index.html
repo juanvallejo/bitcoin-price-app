@@ -27,6 +27,7 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
       <![endif]-->
+  <script src="static/script.js"></script>
   </head>
 
   <body>
@@ -41,7 +42,7 @@
   					<span class="icon-bar"></span>
   					<span class="icon-bar"></span>
   				</button>
-  				<a class="navbar-brand" href="#">Bootstrap theme</a>
+  				<a class="navbar-brand" href="#">Alinova</a>
   			</div>
   			<div class="navbar-collapse collapse">
   				<ul class="nav navbar-nav">
@@ -70,7 +71,7 @@
   		<div class="jumbotron">
   			<h1 id="welcome">BTC Price Checker</h1>
   			<p>Tired of having to visit every exchange that you have Bitcoins in to check their prices?  With BTC Price Checker you can see the exchange rates, and more, all in one place!</p>
-  			<p><a href="#" class="btn btn-primary btn-lg" role="button">Learn more &raquo;</a></p>
+  			<p style="width:100px;margin:0 auto;"><a href="#" style="width:100%;" class="btn btn-primary btn-lg" role="button">Log in &raquo;</a></p>
   		</div>
 
   		<div class="page-header">
@@ -81,13 +82,13 @@
   				<div class="panel-body">
   					<div class="row">
   						<div class="col-sm-4">
-  						<p id="panels">Buy:</p>
+  						<p id="panels">Buy: <span id="buy-price">n/a</span></p>
   						</div>
   						<div class="col-sm-4">
-  							<p id="panels">Sell:</p>
+  							<p id="panels">Sell: <span id="sell-price">n/a</span></p>
   						</div>
   						<div class="col-sm-4">
-  							<p id="panels">&#3647:</p>
+  							<p id="panels">&#3647: <span id="bit-price">n/a</span></p>
   						</div>
   					</div>
 
