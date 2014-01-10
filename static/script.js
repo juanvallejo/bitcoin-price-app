@@ -35,6 +35,7 @@ var apis = {
 
 window.addEventListener('load',function() {
 	var ticker = 10000;
+	var title = document.title;
 	var buyPrice = document.getElementById('buy-price'),
 	sellPrice = document.getElementById('sell-price'),
 	bitPrice = document.getElementById('bit-price');
@@ -46,7 +47,7 @@ window.addEventListener('load',function() {
 			item.get(function(data) {
 				buyPrice.innerHTML = '$'+data.buy.subtotal.amount;
 				sellPrice.innerHTML = '$'+data.sell.subtotal.amount;
-				document.title = buyPrice.innerHTML+' '+document.title;
+				document.title = buyPrice.innerHTML+' '+title;
 			});
 			if(index == apis.exchanges.length-1) setTimeout(update,ticker);
 		});
