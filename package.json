@@ -1,0 +1,35 @@
+{
+  "name": "Bitcoin Price App",
+  "version": "1.0.0",
+  "description": "Bitcoin price checker",
+  "keywords": [
+    "Bitcoin",
+    "Node.js",
+    "Coinbase",
+    "Price Checker"
+  ],
+  "author": {
+    "name": "Juan Vallejo & Cory Bowles",
+    "email": "mail@alinova.org",
+    "url":  "http://alinova.org/"
+  },
+  "homepage": "http://alinova.org/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/juanvallejo/bitcoin-price-app"
+  },
+
+  "engines": {
+    "node": ">= 0.6.0",
+    "npm": ">= 1.0.0"
+  },
+
+  "dependencies": {
+//    "express": "*"
+  },
+  "devDependencies": {},
+  "bundleDependencies": [],
+
+  "private": true,
+  "main": "app.js"
+}
