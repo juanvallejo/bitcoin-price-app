@@ -12,7 +12,7 @@ var apis = {
 				var self = this;
 				$.ajax({
 					dataType:'jsonp',
-					contentType:'application/javascript',
+					contentType:'application/json',
 					type:'GET',
 					url:this[this.action],
 					success:function(data) {
@@ -67,8 +67,16 @@ var apis = {
 										}
 									}
 								};
+								self.data = res;
+								console.log('updating Mt. Gox data...');
 								fn.call(self,res)
 							}
+						});
+						self.socket.on('disconnect',function() {
+							console.log('WARNING: Disconnected from Mt. Gox socket server');
+						});
+						self.socket.on('error',function() {
+							console.log('ERROR: An error occurred parsing data from the Mt. Gox socket server');
 						});
 					} catch(e) {
 						return console.log("Error connecting to the mtgox socket");
