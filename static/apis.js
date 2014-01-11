@@ -34,10 +34,10 @@ var apis = {
 		{
 			_done:false,
 			action:'buy',
-			buy:'https://socketio.mtgox.com:443/mtgox',
+			buy:'http://socketio.mtgox.com:80/mtgox',
 			data:{},
 			name:'mtgox',
-			sell:'https://coinbase.com/api/v1/prices/sell/',
+			sell:null,
 			socket:true,
 			get:function(fn) {
 				var self = this;
