@@ -63,7 +63,7 @@ var apis = {
 									},
 									avg:{
 										subtotal:{
-											amount:data.ticker.avg.display_short.split('$')[1]
+											amount:data.ticker.avg.display_short
 										}
 									}
 								};
