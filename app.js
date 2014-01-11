@@ -14,6 +14,7 @@ var fs = require('fs'),app = require('http').createServer(function(req,res) {
 							packet += chunk;
 						});
 						data.on('end',function() {
+							res.writeHead(200);
 							res.end(packet);
 						});
 					});
