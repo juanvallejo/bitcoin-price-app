@@ -5,8 +5,22 @@ var fs = require('fs'),app = require('http').createServer(function(req,res) {
 	try {
 		fs.readFile(__dirname+path,function(err,data) {
 			if(err) {
-				res.writeHead(500);
-				res.end('404: The page you are looking for cannot be displayed.');
+				var callback = '';
+				if(callback = path.match(/(\/mtgox)(.*)/gi)) {
+					var http = require('http');
+					var packet = '';
+					http.get('http://data.mtgox.com/api/2/BTCUSD/money/ticker_fast',function(data) {
+						data.on('data',function(chunk) {
+							packet += chunk;
+						});
+						data.on('end',function() {
+							res.end(packet);
+						});
+					});
+				} else {
+					res.writeHead(404);
+					res.end('404: The page you are looking for cannot be displayed.');
+				}
 			} else {
 				var types = {
 					'css':'text/css',

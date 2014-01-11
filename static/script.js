@@ -12,7 +12,7 @@ window.addEventListener('load',function() {
 			item.get(function(data) {
 				buyPrice.item(index).innerHTML = '$'+data.buy.subtotal.amount;
 				sellPrice.item(index).innerHTML = '$'+data.sell.subtotal.amount;
-				bitPrice.item(index).innerHTML = !item.socket ? '$'+(Math.round(1/data.sell.subtotal.amount*100000)/100000) : data.avg.subtotal.amount;
+				bitPrice.item(index).innerHTML = !item.socket ? '$'+(Math.round(1/data.buy.subtotal.amount*100000)/100000) : data.avg.subtotal.amount;
 				document.title = buyPrice.item(0).innerHTML+' - '+title;
 			});
 			if(index == apis.exchanges.length-1) setTimeout(update,ticker);

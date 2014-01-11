@@ -34,56 +34,40 @@ var apis = {
 		{
 			_done:false,
 			action:'buy',
-			buy:'http://socketio.mtgox.com:80/mtgox',
+			buy:'/mtgox',
 			data:{},
 			name:'mtgox',
 			sell:null,
-			socket:true,
+			socket:false,
 			get:function(fn) {
 				var self = this;
-				if(!self._done) {
-					try {
-						self.socket = io.connect(self.buy);
-						self.socket.on('connect',function() {
-							self._done = true;
-						});
-						self.socket.on('message',function(data) {
-							if(data.private == 'ticker') {
-								var res = {
-									all:data,
-									buy:{
-										subtotal:{
-											amount:data.ticker.buy.display_short.split('$')[1]
-										}
-									},
-									sell:{
-										subtotal:{
-											amount:data.ticker.sell.display_short.split('$')[1]
-										}
-									},
-									avg:{
-										subtotal:{
-											amount:data.ticker.avg.display_short
-										}
-									}
-								};
-								self.data = res;
-								console.log('updating Mt. Gox data...');
-								fn.call(self,res)
+				$.ajax({
+					dataType:'json',
+					contentType:'application/json',
+					type:'GET',
+					url:this[this.action],
+					success:function(data) {
+						if(data.result != 'success') return console.log('ERROR: Error returned from the Mt. Gox API');
+						data = data.data;
+						var res = {
+							buy:{
+								subtotal:{
+									amount:data.buy.display_short.split('$')[1]
+								}
+							},
+							sell:{
+								subtotal:{
+									amount:data.sell.display_short.split('$')[1]
+								}
 							}
-						});
-						self.socket.on('disconnect',function() {
-							console.log('WARNING: Disconnected from Mt. Gox socket server');
-						});
-						self.socket.on('error',function() {
-							console.log('ERROR: An error occurred parsing data from the Mt. Gox socket server');
-						});
-					} catch(e) {
-						return console.log("Error connecting to the mtgox socket");
+						};
+						self.data = res;
+						fn.call(self,res);
+					},
+					error:function(e) {
+						console.log(e.error());
 					}
-				} else {
-					
-				}
+				});	
 			}
 		}
 	]
