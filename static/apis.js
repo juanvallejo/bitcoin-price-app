@@ -34,17 +34,47 @@ var apis = {
 		{
 			_done:false,
 			action:'buy',
-			buy:'https://coinbase.com/api/v1/prices/buy/',
+			buy:'https://socketio.mtgox.com:443/mtgox',
 			data:{},
 			name:'mtgox',
 			sell:'https://coinbase.com/api/v1/prices/sell/',
 			socket:true,
 			get:function(fn) {
 				var self = this;
-				try {
-					self.socket = io.connect('https://socketio.mtgox.com:443/mtgox');
-				} catch(e) {
-					return console.log("Error connecting to the mtgox socket");
+				if(!self._done) {
+					try {
+						self.socket = io.connect(self.buy);
+						self.socket.on('connect',function() {
+							self._done = true;
+						});
+						self.socket.on('message',function(data) {
+							if(data.private == 'ticker') {
+								var res = {
+									all:data,
+									buy:{
+										subtotal:{
+											amount:data.ticker.buy.display_short.split('$')[1]
+										}
+									},
+									sell:{
+										subtotal:{
+											amount:data.ticker.sell.display_short.split('$')[1]
+										}
+									},
+									avg:{
+										subtotal:{
+											amount:data.ticker.avg.display_short.split('$')[1]
+										}
+									}
+								};
+								fn.call(self,res)
+							}
+						});
+					} catch(e) {
+						return console.log("Error connecting to the mtgox socket");
+					}
+				} else {
+					
 				}
 			}
 		}
