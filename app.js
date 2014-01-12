@@ -24,6 +24,7 @@ var fs = require('fs'),app = require('http').createServer(function(req,res) {
 						if(err) {
 							return res.end('404: The page you are looking for cannot be found.');
 						}
+						res.writeHead(404,{'Content-Type':'text/html'});
 						res.end(data);
 					});
 				}
