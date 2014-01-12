@@ -12,7 +12,7 @@ var apis = {
 				var self = this;
 				$.ajax({
 					dataType:'jsonp',
-					contentType:'application/javascript',
+					contentType:'text/plain',
 					type:'GET',
 					url:this[this.action],
 					success:function(data) {
