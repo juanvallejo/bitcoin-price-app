@@ -6,7 +6,7 @@ var fs = require('fs'),app = require('http').createServer(function(req,res) {
 		fs.readFile(__dirname+path,function(err,data) {
 			if(err) {
 				var callback = '';
-				if(callback = path.match(/(\/mtgox)(.*)/gi)) {
+				if(callback = path.match(/(\/apis\/mtgox)/gi)) {
 					var http = require('http');
 					var packet = '';
 					http.get('http://data.mtgox.com/api/2/BTCUSD/money/ticker_fast',function(data) {
@@ -20,7 +20,12 @@ var fs = require('fs'),app = require('http').createServer(function(req,res) {
 					});
 				} else {
 					res.writeHead(404);
-					res.end('404: The page you are looking for cannot be displayed.');
+					fs.readFile(__dirname+'/static/404.html',function(err,data) {
+						if(err) {
+							return res.end('404: The page you are looking for cannot be found.');
+						}
+						res.end(data);
+					});
 				}
 			} else {
 				var types = {

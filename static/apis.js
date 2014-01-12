@@ -34,7 +34,7 @@ var apis = {
 		{
 			_done:false,
 			action:'buy',
-			buy:'/mtgox',
+			buy:'/apis/mtgox',
 			data:{},
 			name:'mtgox',
 			sell:null,
