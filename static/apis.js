@@ -7,7 +7,7 @@ var apis = {
 			data:{},
 			name:'coinbase',
 			sell:'https://coinbase.com/api/v1/prices/sell/',
-			socket:null,
+			socket:false,
 			get:function(fn) {
 				var self = this;
 				$.ajax({
