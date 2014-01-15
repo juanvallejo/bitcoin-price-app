@@ -10,7 +10,7 @@ function include(path,fn) {
 	var vars = {
 		'navbar':function(fn) {
 			var xhr = new XMLHttpRequest();
-			xhr.open('GET','static/navbar.html',true);
+			xhr.open('GET','/static/navbar.html',true);
 			xhr.send(null);
 			xhr.addEventListener('readystatechange',function() {
 				if(this.readyState == 4 && this.status == 200) {

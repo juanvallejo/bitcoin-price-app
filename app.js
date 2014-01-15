@@ -18,6 +18,15 @@ var fs = require('fs'),app = require('http').createServer(function(req,res) {
 							res.end(packet);
 						});
 					});
+				} else if(path.match(/\/login(\/)?$/gi)) {
+					fs.readFile(__dirname+'/static/login.html',function(err,data) {
+						if(err) {
+							res.writeHead(500);
+							return res.end('500: The app has encountered an error, please try again later.');
+						}
+						res.writeHead(200,{'Content-Type':'text/html'});
+						res.end(data);
+					});
 				} else {
 					res.writeHead(404);
 					fs.readFile(__dirname+'/static/404.html',function(err,data) {
